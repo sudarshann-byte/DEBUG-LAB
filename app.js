@@ -1441,11 +1441,6 @@ function shareResults() {
     }
 }
 
-
-// =============================================================================
-//  KEYBOARD SHORTCUTS
-// =============================================================================
-
 document.addEventListener('keydown', function (e) {
     const gameOn = document.getElementById('screen-game').classList.contains('active');
     const popupOpen = !!document.querySelector('.overlay');
