@@ -1089,11 +1089,6 @@ function runCode() {
     }
 }
 
-
-// =============================================================================
-//  HINT
-// =============================================================================
-
 function useHint() {
     const ch = state.challenges[state.idx];
     if (!ch || state.hintIdx >= ch.hints.length) return;
