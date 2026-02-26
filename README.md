@@ -13,8 +13,6 @@
 [![Modes](https://img.shields.io/badge/Modes-10-646cff?style=flat-square)](#-modes--challenges)
 [![License](https://img.shields.io/badge/License-MIT-fbbf24?style=flat-square)](#-license)
 
-[Play Now](#-quick-start) · [Features](#-features) · [Modes](#-modes--challenges) · [Screenshots](#-screenshots) · [Contributing](#-contributing)
-
 </div>
 
 ---
