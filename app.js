@@ -1034,11 +1034,6 @@ function clearConsole() {
     document.getElementById('console-out').innerHTML = '';
 }
 
-
-// =============================================================================
-//  RUN CODE
-// =============================================================================
-
 function runCode() {
     const ch = state.challenges[state.idx];
     if (!ch) return;
