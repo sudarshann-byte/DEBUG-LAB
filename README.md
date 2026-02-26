@@ -13,6 +13,7 @@
 [![Modes](https://img.shields.io/badge/Modes-10-646cff?style=flat-square)](#-modes--challenges)
 [![License](https://img.shields.io/badge/License-MIT-fbbf24?style=flat-square)](#-license)
 
+link : https://debug-lab.vercel.app/
 </div>
 
 ---
