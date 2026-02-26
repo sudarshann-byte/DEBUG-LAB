@@ -880,9 +880,7 @@ const state = {
 };
 
 
-// =============================================================================
-//  SCREEN MANAGEMENT
-// =============================================================================
+
 
 function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
