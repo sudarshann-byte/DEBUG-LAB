@@ -1485,11 +1485,6 @@ document.addEventListener('keydown', function (e) {
     });
 })();
 
-
-// =============================================================================
-//  INIT
-// =============================================================================
-
 (function init() {
     updateHighScoreDisplay();
     updateTotalSolved();
