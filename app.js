@@ -936,7 +936,6 @@ function loadChallenge() {
     const ch = state.challenges[state.idx];
     if (!ch) return endMode();
 
-    // Reset per-challenge state
     state.hintIdx = 0;
     state.attempts = 0;
     state.challengeTime = 0;
@@ -944,7 +943,6 @@ function loadChallenge() {
     clearInterval(state._challengeInterval);
     state._challengeInterval = setInterval(() => { state.challengeTime++; }, 1000);
 
-    // Header
     const mb = document.getElementById('mode-badge');
     mb.textContent = state.mode.toUpperCase();
     mb.className = 'badge badge-' + state.mode;
@@ -960,15 +958,12 @@ function loadChallenge() {
     document.getElementById('ch-desc').textContent = ch.desc;
     document.getElementById('file-label').textContent = ch.file;
 
-    // Editor
     document.getElementById('code-editor').value = ch.code;
     updateLineNumbers();
 
-    // Hints
     document.getElementById('hints-left').textContent = ch.hints.length;
     document.getElementById('hint-btn').disabled = false;
 
-    // Console
     clearConsole();
 
     const modeLabels = {
@@ -987,14 +982,8 @@ function loadChallenge() {
         addConsole('', '');
     }
 
-    // Preview
     updatePreview();
 }
-
-
-// =============================================================================
-//  UPDATE PREVIEW
-// =============================================================================
 
 function updatePreview() {
     const ch = state.challenges[state.idx];
