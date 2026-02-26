@@ -1054,7 +1054,6 @@ function runCode() {
         state.currentStreak++;
         if (state.currentStreak > state.bestStreak) state.bestStreak = state.currentStreak;
 
-        // Streak bonus
         let streakBonus = 0;
         if (state.currentStreak >= 3) {
             streakBonus = state.currentStreak * 10;
