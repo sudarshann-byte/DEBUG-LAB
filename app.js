@@ -932,11 +932,6 @@ function startMode(mode) {
     startTimer();
 }
 
-
-// =============================================================================
-//  LOAD CHALLENGE
-// =============================================================================
-
 function loadChallenge() {
     const ch = state.challenges[state.idx];
     if (!ch) return endMode();
