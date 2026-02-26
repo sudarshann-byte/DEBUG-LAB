@@ -1105,11 +1105,6 @@ function useHint() {
     addConsole('  (Hint penalty: -' + getHintPenalty(state.hintIdx) + ' pts)', 'c-dim');
 }
 
-
-// =============================================================================
-//  RESET CODE
-// =============================================================================
-
 function resetCode() {
     const ch = state.challenges[state.idx];
     if (!ch) return;
