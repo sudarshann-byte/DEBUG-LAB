@@ -1021,11 +1021,6 @@ function updateLineNumbers() {
     gutter.innerHTML = html;
 }
 
-
-// =============================================================================
-//  CONSOLE HELPERS
-// =============================================================================
-
 function addConsole(msg, cls) {
     const d = document.getElementById('console-out');
     const line = document.createElement('div');
