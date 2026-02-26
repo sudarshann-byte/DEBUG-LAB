@@ -1457,10 +1457,6 @@ document.addEventListener('keydown', function (e) {
 });
 
 
-// =============================================================================
-//  EDITOR ENHANCEMENTS
-// =============================================================================
-
 (function () {
     const editor = document.getElementById('code-editor');
     if (!editor) return;
