@@ -1201,11 +1201,6 @@ function endMode() {
     showScreen('screen-results');
 }
 
-
-// =============================================================================
-//  BREAKDOWN
-// =============================================================================
-
 function renderBreakdown() {
     const c = document.getElementById('r-breakdown');
     if (!c) return;
