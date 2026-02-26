@@ -1045,7 +1045,6 @@ function runCode() {
     addConsole('▶ Running checks...', 'c-dim');
 
     if (ch.check(code)) {
-        // SUCCESS
         const timeBonus = getTimeBonus(state.challengeTime);
         const hintPenalty = getHintPenalty(state.hintIdx);
         const earned = Math.max(0, ch.pts + timeBonus - hintPenalty);
