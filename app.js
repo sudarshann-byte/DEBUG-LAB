@@ -1310,11 +1310,6 @@ function updateTotalSolved() {
     } catch (e) {}
 }
 
-
-// =============================================================================
-//  MODE CARDS — DYNAMIC
-// =============================================================================
-
 function renderModeCards() {
     const grid = document.getElementById('mode-grid');
     if (!grid) return;
