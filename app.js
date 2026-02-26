@@ -914,10 +914,6 @@ function fmtTime(s) {
 }
 
 
-// =============================================================================
-//  START MODE
-// =============================================================================
-
 function startMode(mode) {
     state.mode = mode;
     state.challenges = [...CHALLENGES[mode]];
