@@ -1011,11 +1011,6 @@ function updatePreview() {
     }
 }
 
-
-// =============================================================================
-//  LINE NUMBERS
-// =============================================================================
-
 function updateLineNumbers() {
     const editor = document.getElementById('code-editor');
     const gutter = document.getElementById('line-numbers');
