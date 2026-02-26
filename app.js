@@ -409,9 +409,6 @@ console.log(isZero(false));// true ✗ (should be false)`,
 }
 ],
 
-// =============================================================================
-//  CONSOLE ERROR MODE — 5 Challenges
-// =============================================================================
 console: [
 {
     title:"TypeError: undefined.name", diff:"Easy", pts:100,
