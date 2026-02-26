@@ -1127,11 +1127,6 @@ function skipChallenge() {
     showPopup(false, 0, ch.title, '');
 }
 
-
-// =============================================================================
-//  CONFIRM EXIT
-// =============================================================================
-
 function confirmExit() {
     if (confirm('Leave this session? Progress will be lost.')) {
         stopTimer();
