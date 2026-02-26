@@ -889,11 +889,6 @@ function showScreen(id) {
     if (id === 'screen-modes') renderModeCards();
 }
 
-
-// =============================================================================
-//  TIMER
-// =============================================================================
-
 function startTimer() {
     state.timer = 0;
     clearInterval(state.interval);
