@@ -1261,11 +1261,6 @@ function closePopup() {
     }, 200);
 }
 
-
-// =============================================================================
-//  PERSISTENCE
-// =============================================================================
-
 function saveHighScore(s) {
     try {
         const old = parseInt(localStorage.getItem('dl_hs') || '0');
