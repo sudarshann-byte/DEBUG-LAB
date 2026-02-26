@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Lab — Frontend Debugging Simulator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HOME -->
+<section id="screen-home" class="screen active">
+    <div class="home-bg"></div>
+    <div class="home-content">
+        <div class="home-badge">v2.0 — 5 Modes · 73 Challenges</div>
+        <h1 class="home-title">Debug<span>Lab</span></h1>
+        <p class="home-desc">Find and fix bugs in broken frontend code.<br>CSS · JavaScript · Console · DOM · Async</p>
+        <div class="home-stats-row">
+            <div class="home-stat">
+                <span class="home-stat-val" id="hi-score">0</span>
+                <span class="home-stat-label">Best Score</span>
+            </div>
+            <div class="home-stat">
+                <span class="home-stat-val" id="total-solved">0</span>
+                <span class="home-stat-label">Bugs Fixed</span>
+            </div>
+        </div>
+        <button class="btn btn-primary btn-lg" onclick="showScreen('screen-modes')">
+            Start Debugging
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+    </div>
+</section>
+
+<!-- MODE SELECT -->
+<section id="screen-modes" class="screen">
+    <div class="modes-header">
+        <button class="back-btn" onclick="showScreen('screen-home')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back
+        </button>
+        <div>
+            <h2 class="modes-title">Select Mode</h2>
+            <p class="modes-sub">Each mode focuses on a different debugging skill</p>
+        </div>
+        <div></div>
+    </div>
+    <div class="modes-container">
+        <div id="mode-grid" class="mode-grid"></div>
+    </div>
+</section>
+
+<!-- GAME -->
+<section id="screen-game" class="screen">
+    <div class="game-topbar">
+        <div class="topbar-left">
+            <button class="icon-btn" onclick="confirmExit()" title="Exit">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <span class="badge" id="mode-badge">CSS</span>
+            <span class="topbar-title" id="ch-title">Challenge</span>
+            <span class="badge" id="diff-badge">Easy</span>
+        </div>
+        <div class="topbar-right">
+            <div class="stat-chip timer-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <span id="timer-display">00:00</span>
+            </div>
+            <div class="stat-chip score-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span id="score-display">0</span>
+            </div>
+            <div class="stat-chip prog-chip">
+                <span id="progress-display">1/5</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="challenge-bar" id="ch-desc">Fix the broken code...</div>
+
+    <div class="game-body">
+        <div class="panel editor-panel">
+            <div class="panel-header">
+                <span class="panel-tab active">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+                    <span id="file-label">style.css</span>
+                </span>
+            </div>
+            <div class="editor-wrap">
+                <div class="line-nums" id="line-numbers"></div>
+                <textarea id="code-editor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+            </div>
+        </div>
+
+        <div class="panel preview-panel">
+            <div class="panel-header">
+                <span class="panel-tab active">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Preview
+                </span>
+            </div>
+            <iframe id="preview-frame"></iframe>
+            <div id="js-preview"></div>
+        </div>
+
+        <div class="panel console-panel">
+            <div class="panel-header">
+                <span class="panel-tab active">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                    Console
+                </span>
+                <button class="clear-btn" onclick="clearConsole()">Clear</button>
+            </div>
+            <div id="console-out"></div>
+        </div>
+    </div>
+
+    <div class="game-bottombar">
+        <button class="btn btn-ghost" id="hint-btn" onclick="useHint()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Hint <span id="hints-left">3</span>
+        </button>
+        <button class="btn btn-run" onclick="runCode()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Run Code
+        </button>
+        <button class="btn btn-ghost" onclick="resetCode()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            Reset
+        </button>
+        <div class="bottombar-spacer"></div>
+        <span class="shortcut-label">Ctrl+Enter to Run</span>
+        <button class="btn btn-skip" onclick="skipChallenge()">Skip</button>
+    </div>
+</section>
+
+<!-- RESULTS -->
+<section id="screen-results" class="screen">
+    <div class="results-card">
+        <div class="results-top">
+            <div class="result-grade" id="r-grade">A</div>
+            <h2 id="r-title">Great Job!</h2>
+            <p class="results-sub" id="r-subtitle">Solid debugging skills</p>
+            <div class="results-stars" id="r-stars"></div>
+            <div class="results-score" id="r-score">0</div>
+            <div class="results-max" id="r-max">out of 0 points</div>
+        </div>
+        <div class="results-grid">
+            <div class="rg-item"><span class="rg-val" id="r-time">00:00</span><span class="rg-label">Time</span></div>
+            <div class="rg-item"><span class="rg-val" id="r-solved">0/0</span><span class="rg-label">Solved</span></div>
+            <div class="rg-item"><span class="rg-val" id="r-hints">0</span><span class="rg-label">Hints</span></div>
+            <div class="rg-item"><span class="rg-val" id="r-skipped">0</span><span class="rg-label">Skipped</span></div>
+            <div class="rg-item"><span class="rg-val" id="r-accuracy">0%</span><span class="rg-label">Accuracy</span></div>
+            <div class="rg-item"><span class="rg-val" id="r-streak">0</span><span class="rg-label">Best Streak</span></div>
+        </div>
+        <div class="breakdown-title">Challenge Breakdown</div>
+        <div id="r-breakdown" class="breakdown-list"></div>
+        <div class="results-actions">
+            <button class="btn btn-primary" onclick="replayMode()">Play Again</button>
+            <button class="btn btn-secondary" onclick="showScreen('screen-modes')">Other Modes</button>
+            <button class="btn btn-ghost" id="share-btn" onclick="shareResults()">Copy Results</button>
+        </div>
+    </div>
+</section>
+
+<script src="app.js"></script>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <span class="footer-line">Designed & Developed by</span>
+        <span class="footer-name">Sudarshan Jha</span>
+        <span class="footer-line">© 2025 DebugLab — All rights reserved</span>
+    </div>
+</footer>
+</body>
+</html>
