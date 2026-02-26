@@ -1114,11 +1114,6 @@ function resetCode() {
     addConsole('↺ Code reset to original.', 'c-dim');
 }
 
-
-// =============================================================================
-//  SKIP CHALLENGE
-// =============================================================================
-
 function skipChallenge() {
     const ch = state.challenges[state.idx];
     if (!ch) return;
