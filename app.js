@@ -1220,11 +1220,6 @@ function renderBreakdown() {
     });
 }
 
-
-// =============================================================================
-//  POPUP
-// =============================================================================
-
 function showPopup(success, pts, title, extra) {
     const existing = document.querySelector('.overlay');
     if (existing) existing.remove();
